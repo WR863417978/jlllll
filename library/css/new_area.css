@@ -1,0 +1,88 @@
+body {
+    background-color: rgba(227, 222, 227, 1);
+}
+
+
+/* 页头 */
+
+.order-header {
+    z-index: 9990;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    line-height: 20px;
+    border: 1px solid rgba(187, 187, 187, 1);
+    background-color: rgba(84, 84, 84, 1);
+    color: #ffffff;
+}
+
+.order-header .glyphicon-chevron-left {
+    margin: 0 10px;
+    line-height: 30px;
+}
+
+.order-header .glyphicon-option-vertical {
+    float: right;
+    line-height: 30px;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+
+/* 广告标题 */
+
+.new-title {
+    width: 96%;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    color: rgba(16, 16, 16, 1);
+    background: #ffffff;
+    box-shadow: 0px 0px 10px 0px rgba(127, 125, 128, 1);
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+
+/* 产品列表 */
+
+.new-items {
+    width: 96%;
+    margin: 0 auto;
+}
+
+.pro-items {
+    /* overflow: hidden; */
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 27px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+}
+
+.pro-items .produce {
+    width: 140px;
+    /* margin-top: 27px; */
+    margin-left: 20px;
+}
+
+.pro-items .produce .img {
+    width: 143px;
+    height: 120px;
+    background-color: rgba(173, 168, 173, 1);
+    margin-bottom: 8px;
+}
+
+.pro-items .produce .img img {
+    width: 100%;
+    height: 100%;
+}
+
+.pro-items .produce .price {
+    line-height: 20px;
+    color: rgba(229, 28, 35, 1);
+}

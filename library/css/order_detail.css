@@ -1,0 +1,223 @@
+    body {
+        background-color: rgba(227, 222, 227, 1);
+    }
+    /* 头部 */
+    
+    .order-header {
+        width: 100%;
+        height: 35px;
+        line-height: 20px;
+        border: 1px solid rgba(187, 187, 187, 1);
+        background-color: rgba(84, 84, 84, 1);
+        color: #ffffff;
+    }
+    
+    .order-header .glyphicon-chevron-left {
+        margin: 0 10px;
+        line-height: 30px;
+    }
+    
+    .order-header .glyphicon-option-vertical {
+        float: right;
+        line-height: 30px;
+        margin: 0 10px;
+        font-size: 18px;
+    }
+    /* 内容 */
+    
+    .order-content {
+        width: 100%;
+    }
+    /* 店铺 */
+    
+    .order-content .shop {
+        width: 90%;
+        height: 107px;
+        line-height: 20px;
+        border: 1px solid rgba(187, 187, 187, 1);
+        background-color: rgba(229, 28, 35, 1);
+        color: rgba(16, 16, 16, 1);
+        box-shadow: 0px 0px 14px 0px rgba(170, 170, 170, 1);
+        font-size: 14px;
+        margin: 19px 20px 13px 15px;
+        font-family: Arial;
+    }
+    
+    .order-content .shop .shop-info {
+        margin-left: 20px;
+        color: rgba(187, 187, 187, 1);
+        font-size: 12px;
+        line-height: 17px;
+    }
+    
+    .order-content .shop .shop-info .shop-name {
+        color: #ffffff;
+        font-size: 16px;
+        margin-top: 13px;
+    }
+    
+    .order-content .shop .img {
+        float: right;
+        width: 62px;
+        height: 62px;
+        background-color: rgba(227, 222, 227, 1);
+        margin-right: 33px;
+        margin-top: -70px;
+    }
+    /* 商品 */
+    
+    .order-content .goods {
+        width: 90%;
+        height: 118px;
+        margin: 0 20px 16px 16px;
+        line-height: 20px;
+        background: #ffffff;
+        font-size: 12px;
+        color: rgba(127, 125, 128, 1);
+        font-family: Arial;
+    }
+    
+    .order-content .goods-info {
+        border-bottom: 1px solid rgba(187, 187, 187, 1);
+    }
+    
+    .order-content .goods-info .goods-add {
+        float: left;
+    }
+    
+    .order-content .goods-info .goods-id {
+        /* height: 48px; */
+        margin-left: 30px;
+        margin-bottom: 10px;
+        padding-top: 10px;
+    }
+    
+    .order-content .goods-info .goods-id span {
+        margin-right: 65px;
+    }
+    
+    .order-content .goods-info2 .goods-add {
+        float: left;
+    }
+    
+    .order-content .goods-info2 .goods-id {
+        /* height: 48px; */
+        margin-left: 30px;
+        margin-bottom: 10px;
+        padding-top: 10px;
+    }
+    /* 产品 */
+    
+    .order-content .pro .pro-item {
+        width: 91%;
+        height: 103px;
+        line-height: 20px;
+        background-color: rgba(250, 250, 250, 1);
+        margin: 0 16px;
+        margin-bottom: 8px;
+    }
+    
+    .pro .pro-item .pro-img {
+        float: left;
+        width: 104px;
+        height: 90px;
+        background-color: rgba(185, 182, 186, 1);
+        margin: 5px 11px 8px 4px;
+    }
+    
+    .pro .pro-item .pro-info .pri-old {
+        padding: 8px 12px 0 0;
+        /* height: 45px; */
+        line-height: 20px;
+        color: rgba(16, 16, 16, 1);
+    }
+    
+    .pro .pro-item .pro-info .pri-old .price {
+        float: right;
+    }
+    
+    .pro .pro-item .pro-info .pri-old .old {
+        text-decoration: line-through;
+        width: 39px;
+        color: rgba(127, 125, 128, 1);
+        font-size: 12px;
+    }
+    
+    .pro .pro-item .pro-info .rules {
+        line-height: 17px;
+        color: rgba(127, 125, 128, 1);
+        font-size: 12px;
+    }
+    /* 产品详细信息 */
+    
+    .pro-detail {
+        width: 91%;
+        margin: 12px 13px 0 19px;
+    }
+    
+    .pro-detail .price-all {
+        /* height: 83px; */
+        line-height: 17px;
+        color: rgba(127, 125, 128, 1);
+        font-size: 12px;
+        background: #ffffff;
+    }
+    
+    .pro-detail .price-all .price-part {
+        line-height: 23px;
+        margin: 0px 10px 0 4px;
+        padding-top: 2px;
+    }
+    
+    .pro-detail .price-all .price-part .price {
+        float: right;
+    }
+    
+    .pro-detail .price-all .line {
+        width: 100%;
+        height: 1px;
+        background: rgba(187, 187, 187, 1);
+        margin: 5px 0;
+    }
+    
+    .pro-detail .price-all .all {
+        height: 23px;
+        line-height: 20px;
+        color: rgba(16, 16, 16, 1);
+        font-size: 14px;
+        font-family: Microsoft Yahei;
+    }
+    
+    .pro-detail .price-back {
+        /* height: 83px; */
+        line-height: 17px;
+        color: rgba(127, 125, 128, 1);
+        font-size: 12px;
+        background: #ffffff;
+        margin: 15px 0;
+    }
+    
+    .pro-detail .price-back .price-part {
+        line-height: 23px;
+        margin: 0px 10px 0 4px;
+        padding-top: 2px;
+    }
+    
+    .pro-detail .price-back .price-part .price {
+        float: right;
+        height: 23px;
+        /* line-height: 17px; */
+        color: rgba(229, 28, 35, 1);
+    }
+    /* 底部按钮 */
+    
+    .order-foot {
+        float: right;
+        margin-right: 20px;
+        margin-bottom: 24px;
+    }
+    
+    .order-foot button {
+        width: 80px;
+        height: 30px;
+    }

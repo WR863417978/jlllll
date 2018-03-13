@@ -1,0 +1,36 @@
+@charset "utf-8";
+/*
+*PC端专用样式表
+*/
+/***********HTML元素预定义css**************************************/
+*{ margin:0px; padding:0px; font-family:"Microsoft YaHei","黑体","宋体",sans-serif;}
+img{ border:0; vertical-align:middle;}
+input{outline: none;}
+body{ background-color:#f8f8f8; min-width:1200px; font-size:16px; line-height:21px; color:#555;}
+table{ width:100%;}
+table td{ padding:5px;}
+a:link {text-decoration:none;color:#555;}		/* 未被访问的链接 */
+a:visited {text-decoration:none;color:#555;}	/* 已被访问的链接 */
+a:hover {text-decoration:none;color:#638e9d;}	/* 鼠标指针移动到链接上 */
+a:active {text-decoration:none;color:#638e9d;}	/* 正在被点击的链接 */
+ul{ list-style-type:none;}
+textarea{ resize:none; font-size:16px; color:#555;}
+input,select,textarea{ border:1px solid #bbb; border-radius:4px;}
+input[type=submit],input[type=button]{ padding:3px 6px 3px 6px; cursor:pointer;}
+input[type=file]{ height:21px; font-size:12px;}
+/********************弹出层****************/
+.dibian{width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:10; background-color:#000;-moz-opacity: 0.5;opacity:.50;filter: alpha(opacity=50);}
+.win{ width:400px; height:200px; position:fixed; top:50%; left:50%; margin:-100px 0 0 -200px; z-index:11; background-color:#fff; border-radius:4px;10px 10px 5px #888888;}
+.winTitle{ line-height:40px; background-color:#ddd;padding:0 10px 0 10px; border-top-left-radius:4px; border-top-right-radius:4px;}
+.winClose{ cursor:pointer; float:right; font-size:24px;}
+.winClose:hover{ color:#87a971;}
+#warnWord{ font-size:14px; line-height:20px; text-align:center; display: table-cell; vertical-align:middle; width:300px; height:60px; padding:10px;}
+#warnSure,#warnCancel{ position:absolute; width:150px; height:40px; line-height:40px; text-align:center; bottom:0px; cursor:pointer; color:#fff;}
+#warnSure{ background-color:#ff7472; border-bottom-left-radius:4px;}
+#warnSure:hover{ background-color:#e66765;}
+#warnCancel{ background-color:#ccc; left:150px; border-bottom-right-radius:4px;}
+#warnCancel:hover{ background-color:#aaa;}
+.winFooter{ background-color:#cecdbb; height:40px; line-height:40px; padding:0 10px 0 10px; text-align:right;}
+/***********网站框架**************************************/
+.hide{ display:none;}
+.column{ margin:auto; width:1200px;}
