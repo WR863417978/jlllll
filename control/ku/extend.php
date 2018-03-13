@@ -402,15 +402,15 @@ function findKehu()
 function areaShow($oneId = NULL)
 {
     global $kehu;
-    $recommendArr = explode( '、' , para('recommendArea' ) );    #专区数据
-    $indexNum = para('IndexAreaNum');
-    foreach ($recommendArr as $val)
-    {
-        $sql = "SELECT * FROM goods WHERE recommendArea = '$val' AND isIndex = '是' AND xian = '显示' ORDER BY list LIMIT $indexNum";
-        $res = myQuery($sql);
-        if( $res['0']['sqlRow'] > 0 )
-        {
-            $centerStr = '';
+    $sql = "select * from special where isShow = '显示'";
+    $pdo = newPdo1();
+    $a = $pdo->query($sql);
+    $select = $a->fetchAll(PDO::FETCH_ASSOC);
+    foreach($select as $k=>$val){
+        $sql = "select * from goods where recommendArea = '$val[spid]' order by agio desc limit $val[showPage]";
+        $b = $pdo->query($sql);
+        $res = $b->fetchAll(PDO::FETCH_ASSOC);
+        $centerStr = '';
             foreach ($res as $v)
             {
                 if( !empty($kehu['type']) ) {
@@ -434,12 +434,22 @@ function areaShow($oneId = NULL)
                     </li>";
             }
             $html .= "
-            <div class='key_title'>{$val}</div>
+            <div class='key_title'><a href='".root."m/specialarea.php?id={$val['spid']}'>{$val['specialName']}</a></div>
             <ul class='product-lists mui-dis-flex'>
                 {$centerStr}
             </ul>";
-        }
     }
+    //$recommendArr = explode( '、' , para('recommendArea' ) );    #专区数据
+    //$indexNum = para('IndexAreaNum');
+//foreach ($recommendArr as $val)
+    //{
+        //$sql = "SELECT * FROM goods WHERE recommendArea = '$val' AND isIndex = '是' AND xian = '显示' ORDER BY list LIMIT $indexNum";
+//res = myQuery($sql);
+       // if( $res['0']['sqlRow'] > 0 )
+        //{
+            
+       // }
+    //}
     return $html;
 }
 /**
@@ -1810,11 +1820,9 @@ class UserOrder
                     <div class='order-lists'>
                     <h2 class='mui-dis-flex'><span class='flex1'>订单号：{$val['order_sn']}</span></h2>
                         <dl>
-                        	<a href='mAllOrderShow.php?ordernum={$val['order_sn']}'>
-	                            <dt>
-	                                {$imgHtml}
-	                            </dt>
-                            </a>
+                            <dt>
+                                {$imgHtml}
+                            </dt>
                             <dd><em>共{$orderNum}件 ， 待付款：{$val['money']}元</em></dd>
                             <dd>
                                 <em>
@@ -2955,7 +2963,7 @@ function insertIncome($buyCarId,$pid)
                     $sql = "INSERT INTO `income`(`type`, `khid`, `srcKhid`, `srcName`, `orderId`, `orderTime`, `sales`, `free`, `time`) VALUES ('团队','{$otherHead['khid']}','{$other['khid']}','{$other['name']}','$pid','$date','$sales','$teamFree','$time')";
 
                     $dataJson['团队'] = $sql;
-                }else if( empty($other['type']  ) && !empty($otherHead['type'])){
+                }else if( empty($other['type'] && !empty($otherHead['type']) ) ){
                     #推荐
                     $sql = "INSERT INTO `income`(`type`, `khid`, `srcKhid`, `srcName`, `orderId`, `orderTime`, `sales`, `free`, `time`) VALUES ('推荐','{$otherHead['khid']}','{$other['khid']}','{$other['name']}','$pid','$date','$sales','$recommendFree','$time')";
 
@@ -3259,4 +3267,10 @@ function returnJsonText($text){
     $json['warn'] = $text;
     echo json_encode($json,JSON_UNESCAPED_UNICODE );
     die;
+}
+function newPdo1()
+{
+    $pdo = new PDO('mysql:host='.$GLOBALS['conf']['ServerName'].';dbname='.$GLOBALS['conf']['DatabaseName'], $GLOBALS['conf']['UserName'], $GLOBALS['conf']['password'] );
+    $pdo->query('set names utf8');
+    return $pdo;
 }

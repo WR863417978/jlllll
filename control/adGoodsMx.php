@@ -2,14 +2,48 @@
 //商品详细页
 include "ku/adfunction.php";
 ControlRoot("adGoods");
+$sql = "select * from special where isShow = '显示'";
+$pdo = newPdo();
+$a = $pdo->query($sql);
+$select = $a->fetchAll(PDO::FETCH_ASSOC);
 if(empty($get['id'])){
     $title = "新建商品";
     $button = "新建";
     $goods['isIndex'] = "是";
     $goods['xian'] = "显示";
     $goods['customMade'] = "否";
+    $special = '';
+    $special.= "<select name='recommendArea'>";
+    $special.= "<option value='0'>无</option>";
+    foreach($select as $k=>$v){
+        $special.= "<option value={$v['id']}>{$v['specialName']}</option>";
+    }
+    $special.="</select>";
 }else{
-    $goods = query("goods"," id = '$get[id]' ");
+    $title = "";
+    //$goods = query("goods"," id = '$get[id]' ");
+    $pdo = newPdo();
+    $sql = "select * from goods as g left join special as s on g.recommendArea = s.spid where g.id = '$get[id]'";
+    $a = $pdo->query($sql);
+    $goods = $a->fetch(PDO::FETCH_ASSOC);
+    $special = '';
+    $special.= "<select name='recommendArea'>";
+    if($goods['recommendArea']==0){
+        $special.= "<option selected='selected' value='0'>无</option>";
+        foreach($select as $k=>$v){
+            $special.= "<option value={$v['id']}>{$v['specialName']}</option>";
+        }
+    }else{
+        $special.= "<option value='0'>无</option>";
+        foreach($select as $k=>$v){
+            if($v['spid']==$goods['recommendArea']){
+                $special.= "<option selected='selected' value={$v['id']}>{$v['specialName']}</option>";
+            }else{
+                $special.= "<option value={$v['id']}>{$v['specialName']}</option>";
+            }
+        }
+    }
+    $special.="</select>";
     if($goods['id'] != $get['id']){
         $_SESSION['warn'] = "未找到本商品";
         header("location:{$root}control/adGoods.php");
@@ -264,7 +298,7 @@ if(empty($get['id'])){
 
 }
 //推荐专区
-$tuijian = query("para","paid='recommendArea'");
+/*$tuijian = query("para","paid='recommendArea'");
 $tz = $tuijian['paValue'];
 if(strstr($tz,'、') !==false){
     $recommendArea = explode("、",$tz);
@@ -275,7 +309,7 @@ foreach ($recommendArea as $val){
     if(!empty($val)){
         $tuiHtml .= "<option value='$val'>$val</option>";
     }
-}
+}*/
 $onion = array(
     "商品管理" => root."control/adGoods.php",
     $title => $ThisUrl
@@ -301,19 +335,32 @@ echo head("ad").adheader($onion);
                             <input name="goodsName" type="text" class="text" value="<?php echo $goods['name'];?>"></td>
                     </tr>
                     <tr>
-                        <td>&nbsp;商品所属专区：</td>
+                        <td>&nbsp;商品所属专题：</td>
                         <td>
-                            <select name="recommendArea" type="text" class="text"><?php echo $tuiHtml;?> </select>
-                            <span class="red">该商品正在专区：<?php echo $goods['recommendArea'];?></span>
+                            <?php echo $special;?>
+                            <!-- <select name="recommendArea">
+                                <?php if($goods['recommendArea']==0){?>
+                                    <option value="0" selected="selected">无</option>
+                                    <?php foreach($select as $k=>$v){?>
+                                    <option value=<?php echo $v['id']?>><?php echo $v['specialName']?></option>
+                                <?php }?>
+                                <?php }else{?>
+                                <option value="0">无</option>
+                                <?php foreach($select as $k=>$v){?>
+                                    <option <?php 
+                                        if($v['id']==$goods['recommendArea']){
+                                            echo "selected";
+                                        }
+                                    ?> value=<?php echo $v['id']?>><?php echo $v['specialName']?></option>
+                                <?php }?>
+                                <?php }?>
+                            </select> -->
                         </td>
                     </tr>
                     <tr>
                         <td><span class="red">*</span>&nbsp;分类</td>
                         <td>
-                            <?php echo IDSelect("goodsOne order by list ","goodsOneId","select","id","name","--一级分类--",$goods['goodsOneId']);?>
-                            <select name="goodsTypeTwoId" class="select">
-                                <?php echo IdOption(" goodsTwo where goodsTypeOneId = '$goods[goodsOneId]' and xian = '显示' order by list ","id","name","--二级分类--",$goods['goodsTwoId']);?>
-                            </select>
+                            <?php echo IDSelect("goodsOne order by list ","goodsOneId","select","id","name","--商品分类--",$goods['goodsOneId']);?>
                         </td>
                     </tr>
                     <tr>
@@ -381,7 +428,7 @@ echo head("ad").adheader($onion);
                     </tr>
                     <tr>
                         <td><input name="goodsid" type="hidden" value="<?php echo $goods['id'];?>"></td>
-                        <td><input type="button" class="button" value="<?php echo $button;?>" onclick="Sub('GoodsForm',root+'control/ku/addata.php?type=upGoods')"></td>
+                        <td><input type="button" class="button" value="<?php echo $button;?>" onclick="Sub('GoodsForm','<?php echo root;?>control/ku/addata.php?type=upGoods')"></td>
                     </tr>
                 </table>
             </form>

@@ -473,11 +473,11 @@ elseif ($get['type'] == "queryOne") {
     /**************************商品管理-商品基本资料添加-更新**************************/
 }
 elseif ($get['type'] == "upGoods") {
+    //print_r($post);die;
     //赋值
     $id             = $post['goodsid']; //商品id
     $goodsName      = $post['goodsName']; //商品名称
     $goodsTypeOneId = $post['goodsOneId']; //一级分类id
-    $goodsTypeTwoId = $post['goodsTypeTwoId']; //二级分类id
     $summary        = $post['summary']; //商品摘要
     $promotion      = $post['promotion']; //促销信息
     $parameter      = $post['parameter']; //产品详细参数
@@ -494,6 +494,7 @@ elseif ($get['type'] == "upGoods") {
     $xian = $post['GoodsShow']; //前端显示状态
     $taxPoint = $post['taxPoint'];//发票税点
     $recommendArea  = $post['recommendArea'];
+    $videoUrl = $post['videoAddress'];
     //判断
     if(!power("adGoods","edit")){
         $json['warn'] = "您没有修改商品信息的权限";
@@ -527,8 +528,10 @@ elseif ($get['type'] == "upGoods") {
         //添加商品
         //新增三个字段，会员零售价，会员批发价，物流方式（sql语句内还未添加相应字段）
         $suiji = suiji(); //生成商品id
-        $bool  = mysql_query(" insert into goods (id,name,goodsOneId,goodsTwoId,summary,promotion,parameter,price,priceMarket,list,xian,time,updateTime,customMade,isIndex,recommendArea,taxPoint)
-        values ('$suiji','$goodsName','$goodsTypeOneId','$goodsTypeTwoId','$summary','$promotion','$parameter','$price','$priceMarket','$list','$otherxian','$time','$time','$customMade','$isIndex','$recommendArea','$taxPoint') ");
+        $time = date('Y-m-d H:i:s',time());
+        $sql = "insert into goods (`id`,`recommendArea`,`goodsOneId`,`name`,`summary`,`promotion`,`parameter`,taxPoint,`customMade`,`isIndex`,`videoUrl`,`list`,`xian`,`time`,`updateTime`)values('$suiji','$recommendArea','$goodsTypeOneId','$goodsName','$summary','$promotion','parameter','$taxPoint','$customMade','$isIndex','$videoUrl','$list','$otherxian','$time','$time')";
+         $bool  = mysql_query($sql);
+/*        $bool  = mysql_query(" insert into goods (id,name,goodsOneId,summary,promotion,parameter,price,priceMarket,list,xian,time,updateTime,customMade,isIndex,recommendArea,taxPoint)values ('$suiji','$goodsName','$goodsTypeOneId','$summary','$promotion','$parameter','$price','$priceMarket','$list','$otherxian','$time','$time','$customMade','$isIndex','$recommendArea','$taxPoint') ");*/
         if ($bool) {
             $_SESSION['warn'] = "新建商品成功";
             $json['warn']     = 2;
@@ -547,15 +550,13 @@ elseif ($get['type'] == "upGoods") {
         if ($goods['id'] != $id) {
             $json['warn'] = "未找到该商品";
         } else {
+            $time = date('Y-m-d H:i:s',time());
             $bool = mysql_query(" update goods set
             goodsOneId = '$goodsTypeOneId',
-            goodsTwoId = '$goodsTypeTwoId',
             name = '$goodsName',
             summary = '$summary',
             promotion = '$promotion',
             parameter = '$parameter',
-            price = '$price',
-            priceMarket = '$priceMarket',
             list = '$list',
             xian = '$otherxian',
             customMade = '$customMade',

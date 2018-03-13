@@ -1,12 +1,12 @@
 <?php 
 include "ku/adfunction.php";
-ControlRoot('');
+ControlRoot();
 //为公司服务的天数
 $tian = ceil((strtotime($time)-strtotime($Control['entryTime']))/60/60/24);
 //请假时长
 $startTime = date("Y-m-01");
 $endTime = date('Y-m-d',strtotime("$startTime +1 month"));
-//$workTime = mysql_fetch_array(mysql_query(" select sum(hour) as 'hour' from work where adid = '$Control[adid]' and time > '$startTime' and time < '$endTime' "));
+$workTime = mysql_fetch_array(mysql_query(" select sum(hour) as 'hour' from work where adid = '$Control[adid]' and time > '$startTime' and time < '$endTime' "));
 if(empty($workTime['hour'])){
 	$workTime['hour'] = 0;
 }

@@ -1,21 +1,17 @@
 <?php
 include "../library/mFunction.php";
-include "../control/ku/newfunction.php";
 //isRegister();#判断是否注册
 echo head('m');
 $khType =  $kehu['type'];#客户等级类型
-//$norData = findOne('img',"id = 'myh84324058lV'");   #普通会员数据
-//$vipData = findOne('img',"id = 'pah84324212yj'");   #高级会员数据
-//会员商品
-$data = seletesql('member_goods');
-
+$norData = findOne('img',"id = 'myh84324058lV'");   #普通会员数据
+$vipData = findOne('img',"id = 'pah84324212yj'");   #高级会员数据
 /* $norDataHtml = explode('、',$norData['text']);
 $vipDataHtml = explode('、',$norData['text']); */
 #会员轮播图
 $memberImg = memberBannerBuild();
 #普通、VIP价格数据
-//$norMem = explode( '、' , para('normalMember') );
-//$vipMem = explode( '、' , para('vipMember') );
+$norMem = explode( '、' , para('normalMember') );
+$vipMem = explode( '、' , para('vipMember') );
 
 #会员优惠劵列表
 $result = findAll('coupon',"goodsId = '会员优惠劵' AND starTime <= '$time' AND endTime >= '$time' ORDER BY endTime DESC");
@@ -83,19 +79,17 @@ if( $result )
         <!--类别-->
         <div class="key_title">获赠商品</div>
         <ul class="product-lists product-lists mui-dis-flex">
-        	<?php foreach($data as $v){ ?>
             <li class='memberType memberType2' data-key='nor'>
-                <a href="mMemberGoods.php?id=<?php echo $v['id']; ?>">
-                    <img src="<?php echo $v['goods_img'];?>"/>
-                    <p class="nameSpc"><?php echo $v['goods_name'];?></p>
+                <a>
+                    <img src="<?php echo root,$norData['src'];?>"/>
+                    <p class="nameSpc"><?php echo $norData['name'];?></p>
                     <p class="textSale">
-                        <em class="text-price">￥<?php echo $v['goods_money'];?></em>
+                        <em class="text-price">￥<?php echo $norMem['0'];?></em>
                     </p>
-                    <!--<span>普通会员</span>-->
+                    <span>普通会员</span>
                 </a>
             </li>
-            <?php } ?> 
-            <!--<li class='memberType memberType2' data-key='vip'>
+            <li class='memberType memberType2' data-key='vip'>
                 <a>
                     <img src="<?php echo root,$vipData['src'];?>"/>
                     <p class="nameSpc"><?php echo $vipData['name'];?></p>
@@ -104,7 +98,17 @@ if( $result )
                     </p>
                     <span>高级会员</span>
                 </a>
-            </li>-->
+            </li>
+            <!-- <li>
+                <a>
+                    <img src="<?php echo img('wOZ84129241GJ');?>"/>
+                    <p class="nameSpc">【旗舰店正品】美肤宝茶爽冰膜面膜贴保湿补水晒后修复舒缓肌肤</p>
+                    <p class="textSale">
+                        <em class="text-price">￥89.00</em>
+                        <em class="text-sale">销量:60</em>
+                    </p>
+                </a>
+            </li> -->
         </ul>
         <!--//-->
     </div>

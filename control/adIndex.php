@@ -173,9 +173,6 @@ $adGoods = "
     <img src='" . root . "img/images/arrow.png'>
     <span>商品管理</span>
 </li>
-<li menuParent='goods' menuTwo='adAccount' class='" . menu("adMemberGoods.php", "frameLeftHover") . "' iframeHref='" . root . "control/adMemberGoods.php'>
-    <img src='" . root . "img/images/arrow.png'>
-    <span>会员商品</span>
 </li>
 ";
 $adDemand = "
@@ -255,6 +252,8 @@ if (powerPage("adCodeHelp")) {
     $menu .= $adCodeHelp;
 }
 
+
+
 echo head("ad");
 ?>
 <div class="frameTop">
@@ -264,13 +263,13 @@ echo head("ad");
         退出
     </a>
 </div>
-<div class="iframeTitle">
+ <div class="iframeTitle">
     <ul>
         <li class="iframeTitleNow">
             <div iframeMenuHref="<?php echo root . "control/control/adpersonal.php"; ?>">我的桌面</div>
         </li>
     </ul>
-</div>
+</div> 
 <div class="frameLeft">
     <ul><?php echo $menu; ?></ul>
 </div>

@@ -72,6 +72,7 @@ if (isset($_SESSION['khid']) and $_SESSION['khid'] != "") {
 function powerPage($power)
 {
     $adPower = array_keys($GLOBALS['adPower']);
+   // print_r($adPower);die;
     if (empty($power)) {//如果本页面不需要特殊权限就能打开，则设$power为空
         return true;
     } elseif (count(array_intersect($adPower, explode(",", $power))) > 0) {
@@ -88,7 +89,7 @@ function power($page, $power)
 }
 
 //管理员权限跳转函数
-function ControlRoot($power)
+function ControlRoot($power='')
 {
     if ($GLOBALS['ControlFinger'] == 2) {
         $_SESSION['warn'] = $GLOBALS['ControlWarn'];
@@ -366,7 +367,7 @@ function option($title, $option, $value)
 function select($name, $class, $title, $option, $value)
 {
     $result = "
-	<select name='{$name}' class='{$class}'  style=\"display: inline-block;padding: 4px;\">
+	<select name='{$name}' class='{$class}' >
 	" . option($title, $option, $value) . "
 	</select>
 	";

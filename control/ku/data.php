@@ -4,6 +4,18 @@ if($ControlFinger == 2){
     $json['warn'] = $ControlWarn;
 /************信息管理-网站图片管理-返回网站参数********************************************/
 //当新建图片，即id号为空时还需要从后端传参数的原因是：当客户先点击其他已有图片参数，然后再点击新建图片，需要初始化参数面板。
+}elseif($get['type'] == "adspecial"){
+	$time = date('Y-m-d H:i:s',time());
+	$sql = "insert into `special` (`specialName`,`isShow`,`createTime`,`updateTime`)values('$post[specialName]','$post[isShow]','$time','$time')";
+	$res = mysql_query($sql);
+	$json['href'] = '../index/special.php';
+	$json['warn'] = 2;
+}elseif($get['type'] == "upspecial"){
+	$upTime = date('Y-m-d H:i:s',time());
+	$sql = "update `special` set specialName = '$post[specialName]',isShow = '$post[isShow]',updateTime='$upTime',showPage='$post[showPage]' where spid = $post[id]";
+	$result = mysql_query($sql);
+	$json['href'] = '../index/special.php';
+	$json['warn'] = 2;
 }elseif($get['type'] == "adGetImgParameter"){
     $id = $post['id'];//图片表ID号
 	if(empty($id)){

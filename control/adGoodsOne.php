@@ -6,7 +6,7 @@ $sql="select * from goodsOne ".$_SESSION['adGoods']['Sql'];
 paging($sql," order by time desc",20);
 $onion = array(
     "商品管理" => root."control/adGoods.php",
-    "一级分类列表" => $ThisUrl
+    "分类列表" => $ThisUrl
 );
 echo head("ad").adheader($onion);
 ?>
@@ -14,8 +14,8 @@ echo head("ad").adheader($onion);
         <div class="search">
             <span onclick="$('[name=ClientForm] [type=checkbox]').prop('checked',true);" class="spanButton">选择全部</span>
             <span onclick="$('[name=ClientForm] [type=checkbox]').prop('checked',false);" class="spanButton">取消选择</span>
-            <a href="<?php echo root."control/adGoodsOne.php";?>"><span class="spanButton">一级分类</span></a>
-            <a href="<?php echo root."control/adGoodsOneMx.php";?>"><span class="spanButton">新建一级分类</span></a>
+            <a href="<?php echo root."control/adGoodsOne.php";?>"><span class="spanButton">分类</span></a>
+            <a href="<?php echo root."control/adGoodsOneMx.php";?>"><span class="spanButton">新建分类</span></a>
             <span onclick="EditList('GoodsOneForm','deleteGoodsOne')" class="spanButton">删除所选</span>
             <span class="smallWord floatRight">
 			共找到<?php echo $num;?>条数据&nbsp;&nbsp;
@@ -29,7 +29,7 @@ echo head("ad").adheader($onion);
             <table class="tableMany">
                 <tr>
                     <td></td>
-                    <td style="width:266px;">商品一级分类</td>
+                    <td style="width:266px;">商品分类</td>
                     <td style="min-width:109px;">排序</td>
                     <td style="width:188px;">显示状态</td>
                     <td style="width:419px;">更新时间</td>

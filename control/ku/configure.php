@@ -1,7 +1,7 @@
 <?php
 //常量
 define("root", "/"); //网站根目录
-define("ServerRoot", "D:\\phpStudy\\www\\juligit\\"); //本网站的服务器根目录（不能使用$_SERVER ['DOCUMENT_ROOT']的原因：测试环境往往在非根目录下运行）
+define("ServerRoot", "E:\\juli\\"); //本网站的服务器根目录（不能使用$_SERVER ['DOCUMENT_ROOT']的原因：测试环境往往在非根目录下运行）
 //define("version", "1.1.2"); //版本号，主要解决js和css的缓存问题
 define("version", mt_rand(10000, 99999)); //版本号，主要解决js和css的缓存问题
 //变量
@@ -10,7 +10,7 @@ $root = root;
 $conf = array(
     "ServerName"   => "localhost", //mysql服务器名称
     "UserName"     => "root", //mysql服务器登录账号
-    "password"     => "root", //mysql服务器登录密码
+    "password"     => "", //mysql服务器登录密码
     "DatabaseName" => "juli", //目前使用的数据库的名称
     "SmsName"      => "18581286862", //短信账户名（一般为注册手机号码）
     "SmsPwd"       => "3AE17D34D81367185C57BEA28772", //pwd码
@@ -100,12 +100,6 @@ $powerAll = array(
             "del"        => "删除",
             "xian"       => "上，下架",
             "editProfit" => "利率编辑",
-        ),
-        "adMemberGoods" => array(
-            "name"       => "商品管理",
-            "see"        => "查询",
-            "edit"       => "编辑",
-            "del"        => "删除",
         ),
     ),
     "评论管理"  => array(

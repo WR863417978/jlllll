@@ -19,6 +19,7 @@ switch ($type) {
         $orderHtml = UserOrder::allOrder($kehu['khid']);
         break;
 }
+
 ?>
 <body>
 <!--头部-->

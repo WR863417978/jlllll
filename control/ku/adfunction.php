@@ -1,8 +1,5 @@
 <?php
 include dirname(__FILE__) . "/configure.php";
-
-
-
 /***********************列表菜单************************/
 function adlist($img, $url, $title, $word){
     return "

@@ -10,7 +10,7 @@
 include "ku/adfunction.php";
 ControlRoot("adGoods");
 if(empty($_GET['id'])){
-    $title = "新建一级分类";
+    $title = "新建分类";
     $button = "新建";
 }else{
     $id = FormSubArray($_GET['id']); //格式化ID
@@ -25,7 +25,7 @@ if(empty($_GET['id'])){
 }
 $onion = array(
     "商品管理" => root."control/adGoods.php",
-    "商品一级分类" => root."control/adGoodsOne.php",
+    "商品分类" => root."control/adGoodsOne.php",
     $title => $ThisUrl
 );
 echo head("ad").adheader($onion);
@@ -38,11 +38,11 @@ echo head("ad").adheader($onion);
             <form name="goodsOneForm">
                 <table class="tableRight">
                     <tr>
-                        <td>&nbsp;&nbsp;商品一级分类ID：</td>
+                        <td>&nbsp;&nbsp;商品分类ID：</td>
                         <td><?php echo $goodsOne['id']; ?></td>
                     </tr>
                     <tr>
-                        <td><span class="red">*</span>&nbsp;&nbsp;商品一级分类名称：</td>
+                        <td><span class="red">*</span>&nbsp;&nbsp;商品分类名称：</td>
                         <td><input name="name" type="text" class="text" value="<?php echo $goodsOne['name']; ?>"></td>
                     </tr>
                     <tr>

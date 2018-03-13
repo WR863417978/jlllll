@@ -6,6 +6,9 @@ $oid = $get['oid']; #一级分类id
 $navList    = navListShow($oid);    #移动端顶部一级分类导航
 $advHtml    = advShow();            #广告专区
 $areaHtml   = areaShow();           #专区推荐
+/*$pdo = newPdo();
+$a = $pdo->query($sql);
+$select = $a->fetchAll(PDO::FETCH_ASSOC);*/
 #限时和上新地址
 $limitTime 	= findOne('goodsOne',"name = '限时'");
 $limitTime 	= root.'m/mGoodsList.php?oid='.$limitTime['id'];
@@ -17,6 +20,7 @@ $indexBanner = indexBanner();
 $topicImg = topicImg();
 #ico图片
 $icoImg = icoImgBuild();
+
 //
 if( $_SESSION['khid'] == '2715343303' || $_SESSION['khid'] == '1994753883' )
 {

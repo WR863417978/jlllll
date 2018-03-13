@@ -18,11 +18,13 @@ function Sub(form,url){
 		//console.log(data);
 		if(data.warn == 2){
 			if(data.href){//如果异步返回的json参数中定义了重定向url，则跳转到本url
+
 				window.location.href = data.href;
 			}else{
 				window.location.reload();
 			}
 		}else{
+			console.log('1')
 			warn(data.warn);
 		}
 	},"json");

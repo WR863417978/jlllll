@@ -189,6 +189,7 @@ elseif($get['type'] == "adSearchGoods"){
     $name = $post['name'];//商品名称
     $goodsOneId = $post['goodsOne'];//一级分类
     $xian = $post['SearchShow'];//显示状态
+    $special = $post['special'];
     $x = " where 1=1";
     //串联查询语句
     if(!empty($name)){
@@ -199,6 +200,9 @@ elseif($get['type'] == "adSearchGoods"){
     }
     if(!empty($xian)){
         $x .= " and xian = '$xian' ";
+    }
+    if(!empty($special)){
+        $x .= " and recommendArea = '$special'";
     }
 //返回值
     $_SESSION['SearchGoods'] = array("name"=>$name,"goodsOneId"=>$goodsOneId,"xian"=>$xian,"Sql" => $x);

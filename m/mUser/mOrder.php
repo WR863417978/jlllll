@@ -45,7 +45,7 @@ if( empty($kehu['shopImg']) ){
         </div>
         <!--会员中心横向导航-->
         <dl class="user-nav user-nav2 mui-dis-flex order-nav">
-            <dd><a href='mAllOrder.php?type=all'><i><img src="<?php echo img('jCs87954458Mt');?>"/></i><br/><span>全部订单</span></a></dd>
+            <dd><a href='mAllOrder.php'><i><img src="<?php echo img('jCs87954458Mt');?>"/></i><br/><span>全部订单</span></a></dd>
             <dd><a href='mAllOrder.php?type=noPay'><i><img src="<?php echo img('kRG87954688rz');?>"/></i><br/><span>待付款</span></a></dd>
             <dd><a href="mAllOrder.php?type=tosend"><i><img src="<?php echo img('jCs87954458Mi');?>"/></i><br/><span>待发货</span></a></dd>
             <dd><a href='mAllOrder.php?type=hasSend'><i><img src="<?php echo img('oJd87954715uP');?>"/></i><br/><span>待收货</span></a></dd>
